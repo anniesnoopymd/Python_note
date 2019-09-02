@@ -196,6 +196,85 @@ np.ones(你要的形狀)
 :::
 
 
+---
+### 用 Array 畫圖
+
+```python
+%matplotlib inline
+import numpy as np
+import matplotlib.pyplot as plt
+
+y = np.random.rand(50)
+plt.plot(y)
+```
+
+![](https://i.imgur.com/VEjzWES.png)
+
+電腦化函數圖形基本上就是用最陽春的方法「描點法」。
+描點法的第一步，是建立一連串的點
+```
+x = np.linspace(起始點,結束點,多少個點)
+```
+```python
+x = np.linspace(1,10,100)
+```
+
+
+:::warning
+直接對x計算相對應的函數值，搭配 plt.plot() 就可以畫圖了
+:::
+
+```python
+plt.plot(x, np.sin(x)+x)
+```
+
+![](https://i.imgur.com/x1NNAmh.png)
+
+可以在一張圖上畫多條線
+```python
+plt.plot(x, np.sin(x) +x)
+plt.plot(x, np.cos(x))
+```
+
+![](https://i.imgur.com/0ygQKFB.png)
+![](https://i.imgur.com/yM6fUmn.png)
+
+---
+
+#### Array 快篩法
+
+假設我們有一陣列 L
+
+    L = np.array([3, -55 , 92, -34, -43])
+
+現在我們想要取出陣列 L 中小於零的數字，先來看看 輸入`L<0` 會是什麼狀況
+
+![](https://i.imgur.com/q8p7xRP.png)
+
+它幫我們重新產出整個陣列，俵告訴我們每一個元素是大於零或小於零，但我們若要直接印出陣列裡所有小於零的元素該怎麼做？
+
+之前學過要選出陣列中第 2~4 的元素，我們可以使用 `L[1:4]` 的方式，也就是說 Array 的選項可以利用判斷式來挑選元素
+
+:::warning
+array中符合條件的元素 `array = array[條件]`
+:::
+
+我以我們將 L<0 做為條件，便可以印出以下結果：
+```python
+L[L<0]
+```
+![](https://i.imgur.com/2SthHcc.png)
+
+若要將大於零的區域標記出來，可以使用 `plt.plot(x[y>0], y[y>0])`
+```python
+plt.plot(x,y)
+plt.plot(x[y>0], y[y>0], 'o')
+```
+![](https://i.imgur.com/clyePL7.png)
+
+
+
+
 
 
 
